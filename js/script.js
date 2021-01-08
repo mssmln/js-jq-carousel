@@ -13,23 +13,35 @@ $(document).ready(function() {
   var nextArrow = $('.next i');
   var prevArrow = $('.prev i');
 
-  prevArrow.click(function() {
-
-    // code below
-    var img = $('.images img.active');
-
-    img.removeClass('active');
-    img.prev('.last').addClass('active');
-  });
-
-
   nextArrow.click(function(){
 
     // code below
     var img = $('.images img.active'); // se lo scrivi sopra all'evento click funzionerà solo la prima volta
+    var firstImg = $('.images img.first');
+    var pallino = $('.nav i.active');
+    var firstPallino = $('.nav i.first');
 
     img.removeClass('active');
     img.next().addClass('active');
+
+    pallino.removeClass('active');
+    pallino.next().addClass('active');
+
+    if (img.hasClass('last')) {
+      firstImg.addClass('active');
+      firstPallino.addClass('active');
+    }
   });
+
+
+
+  prevArrow.click(function() {
+
+    // code below
+    img.removeClass('active');
+    img.prev().addClass('active');
+  });
+
+
 
 });
