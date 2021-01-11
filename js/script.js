@@ -9,13 +9,13 @@
 
 $(document).ready(function() {
 
-  // code below
+  // dichiaro le variabili
   var nextArrow = $('.next i');
   var prevArrow = $('.prev i');
   var clickPallino = $('.nav i');
 
 
-  // richiamo la funzione next
+  // richiamo le funzioni
   nextArrow.click(next);
   prevArrow.click(prev);
   clickPallino.click(pallino);
@@ -26,55 +26,45 @@ $(document).ready(function() {
 
 
 function next(){
-
-  // code below
-  var img = $('.images img.active'); // se lo scrivi sopra all'evento click funzionerà solo la prima volta
+  // con questa funzione al click della freccia destra cambia la img e il pallino colorato
+  var img = $('.images img.active');
+  var pallino = $('.nav i.active');
   var firstImg = $('.images img.first');
 
   img.removeClass('active');
-
-  var pallino = $('.nav i.active');
   pallino.removeClass('active');
-
-
 
   if (img.hasClass('last')) {
     firstImg.addClass('active');
     $('.nav i.first').addClass('active');
-
   } else {
     img.next().addClass('active');
     pallino.next().addClass('active');
-
   }
 }
 
+
 function prev() {
-
-  // code below
+  // quando ci spostiamo verso sinistra cambia la img e il pallino colorato
   var img = $('.images img.active');
-  img.removeClass('active');
   var pallino = $('.nav i.active');
+
+  img.removeClass('active');
   pallino.removeClass('active');
-
-
 
   if (img.hasClass('first')) {
     $('.images img.last').addClass('active');
     $('.nav i.last').addClass('active');
-
   } else {
     img.prev().addClass('active');
     pallino.prev().addClass('active');
-
   }
-
 }
 
 
 function pallino() {
-
-  // code below
-  
-
+  // ci spostiamo nello slider attraverso i pallini
+  $('.active').removeClass('active');
+  $(this).addClass('active');
+  $('img').eq($(this).index()).addClass('active');
 }
